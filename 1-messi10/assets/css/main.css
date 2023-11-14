@@ -1,15 +1,48 @@
 body {
     background: #16032E;
     color: #fff;
+    width: 100vw;
 }
 
 li {
     list-style: none;
 }
 
+/*barra de navegacion*/
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;    
+}
+.nav img{
+    margin: 1rem;
+}
+
+/*logo*/
+.logo{
+    position: absolute;
+    width: 40%;
+    top: 10%;
+    left: 55%;
+    z-index: 1;
+}
+
+/*banner*/
+.banner-messi{
+    width: 100%;
+}
+/*home-nav*/
 .home-nav li a{
     text-decoration: none;
     color: white;
+    font-size: 1.5rem;
+    font-weight: regular;
+}
+.home-nav li img{
+    margin-left: 1rem;
 }
 
 .home-nav {
@@ -19,13 +52,39 @@ li {
 
 .home-nav li {
     display: flex;
-    /* width: 22.5rem; */
+    
     height: 5rem;
     padding: 0rem 1rem;
-    margin: 0.5rem;
+    margin: 1rem 0.5rem;
     align-items: center;
-
     border-radius: 0.9375rem;
     background: linear-gradient(90deg, #761D65 0%, #302365 100%);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.home-nav li:nth-child(2){
+    background: var(--bg-degree-blue, linear-gradient(90deg, rgba(70, 188, 255, 0.96) 0%, #302365 100%));
+}
+.home-nav-icon{
+    position: relative;
+    top: 1rem;
+    left: 5rem;
+}
+
+/* Footer */
+footer{
+    background-color: #F5F5F5;
+}
+
+.footer-nav{
+    padding: 1rem;
+    margin: 0;
+}
+.footer-nav li:first-child{
+    margin: 1rem 0;
+}
+
+.footer-nav li a{
+    text-decoration: none;
+    color: #454545;
 }

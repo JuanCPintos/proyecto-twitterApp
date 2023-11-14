@@ -1,0 +1,11 @@
+{
+    "name": "juan/php-fw",
+    "description": "My first framework",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Juan Pintos"
+        }
+    ],
+    "require": {}
+}
