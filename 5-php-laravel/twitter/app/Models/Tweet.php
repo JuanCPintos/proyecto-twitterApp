@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
-    protected $fillable = ['message'];
-    
     use HasFactory;
+
+    protected $fillable = [
+        'message',
+        'name'
+    ];
 }

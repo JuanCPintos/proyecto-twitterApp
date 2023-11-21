@@ -48,19 +48,37 @@
         </div>
     </nav>
     <main>
-        <h1>Tweet</h1>
-        <p><a href="{{ route('tweets.create') }}">Postear</a></p>
+        <h1>edita tu tweet #{{$tweet->id}}</h1>
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach( $errors->all() as $error )
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
 
-        @foreach( $tweets as $tweet )
-        <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">{{ $tweet->name }}</h5>
-                <p class="card-text">{{ $tweet->message }}</p>
-                <a href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Editar</a>
-                <a href="{{ route('tweets.delete', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Eliminar</a>
+        <form action="{{ route('tweets.update', ['tweet'=> $tweet->id]) }}" method="POST">
+            @csrf
+            @method('put')
+            {{-- <input type="hidden" name="tweet_id" value="{{$tweet->id}}"> --}}
+            
+            <div>
+                <label>Tweet:</label>
+                <input name="tweet" value="{{ $tweet->message }}">
+                @error('tweet')
+                    <div>{{ $message }}</div>
+                @enderror
             </div>
-        </div>
-        @endforeach
+
+            <hr>
+            <button type="submit">Enviar</button>
+        </form>
+        <p>
+            <a href="{{ route('tweets') }}">
+                Volver
+            </a>
+        </p>
     </main>
 
 
