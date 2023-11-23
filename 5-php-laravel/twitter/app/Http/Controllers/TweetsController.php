@@ -15,10 +15,18 @@ class TweetsController extends Controller
 
         // $tweets = Tweet::get();
         // // dd($tweets);
+
+        // recupero los diferentes valores de session
+        $notify_tweet_published = session('notify_tweet_published');
+        $notify_tweet_updated = session('notify_tweet_updated');
+        $notify_tweet_deleted = session('notify_tweet_deleted');
         
         // Busca la carpeta tweets y levanta la vista index
         return view('tweets/index',[
-            'tweets' => $tweets
+            'tweets' => $tweets,
+            'notify_tweet_published' => $notify_tweet_published,
+            'notify_tweet_updated' => $notify_tweet_updated,
+            'notify_tweet_deleted' => $notify_tweet_deleted
         ]);
     }
     public function create() {
@@ -43,6 +51,8 @@ class TweetsController extends Controller
         $tweet->message = $validated['tweet'];
         // $tweet->name = $validated['name'];
         $tweet->save();
+
+        session()->flash('notify_tweet_updated', true );
 
         return redirect()->route('tweets');
     }
@@ -70,6 +80,8 @@ class TweetsController extends Controller
         $new_tweet->name = $validated['name'];
         $new_tweet->save();
 
+        session()->flash('notify_tweet_published', true );
+
         return redirect()->route('tweets');
     }
 
@@ -82,6 +94,9 @@ class TweetsController extends Controller
     public function destroy(Tweet $tweet) {
 
         $tweet->delete();
+
+        session()->flash('notify_tweet_deleted', true );
+
         return redirect()->route('tweets');
     }
 }

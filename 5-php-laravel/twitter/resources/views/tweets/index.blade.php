@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Twitter</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -47,6 +47,25 @@
             </div>
         </div>
     </nav>
+
+    @if( $notify_tweet_published )
+    <div class="alert alert-success" role="alert">
+        Tweet publicado con éxito
+    </div>
+    @endif
+
+    @if( $notify_tweet_updated )
+    <div class="alert alert-success" role="alert">
+        Tweet actualizado con éxito
+    </div>
+    @endif
+
+    @if( $notify_tweet_deleted )
+    <div class="alert alert-danger" role="alert">
+        Tweet eliminado con éxito
+    </div>
+    @endif
+
     <main>
         <h1>Tweet</h1>
         <p><a href="{{ route('tweets.create') }}">Postear</a></p>
