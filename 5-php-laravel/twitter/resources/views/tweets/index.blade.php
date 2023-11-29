@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -48,7 +48,7 @@
         </div>
     </nav>
 
-    @if( $notify_tweet_published )
+    {{-- @if( $notify_tweet_published )
     <div class="alert alert-success" role="alert">
         Tweet publicado con éxito
     </div>
@@ -64,9 +64,9 @@
     <div class="alert alert-danger" role="alert">
         Tweet eliminado con éxito
     </div>
-    @endif
+    @endif --}}
 
-    <main>
+    {{-- <main>
         <h1>Tweet</h1>
         <p><a href="{{ route('tweets.create') }}">Postear</a></p>
 
@@ -75,15 +75,50 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $tweet->name }}</h5>
                 <p class="card-text">{{ $tweet->message }}</p>
-                <a href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Editar</a>
-                <a href="{{ route('tweets.delete', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Eliminar</a>
+                
+                <div>
+                    <a href="{{route('tweets.edit',['tweet'=>$tweet->id])}}"
+                        class="btn btn-primary">Contestar</a>
+                    <div>
+                        @if(auth()->check())
+                            @if($tweet->user_id == auth()->user()->id)
+                                <a href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ route('tweets.delete', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Eliminar</a>
+                            @endif
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
         @endforeach
-    </main>
+    </main> --}}
 
-
+{{-- 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html> --}}
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Tweets') }}
+        </h2>
+    </x-slot>
+
+    {{-- <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("You're logged in!") }}
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+    @foreach ($tweets as $tweet)
+        <x-tweets.tweet :tweet="$tweet"> </x-tweets.tweet>
+    @endforeach
+
+
+</x-app-layout>

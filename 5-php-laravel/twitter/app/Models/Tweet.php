@@ -11,6 +11,17 @@ class Tweet extends Model
 
     protected $fillable = [
         'message',
-        'name'
+        'user_id',
+        'created_at'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'tweet_id', 'id');
+    }
 }

@@ -31,8 +31,7 @@ class TweetsController extends Controller
     }
     public function create() {
         return view('tweets.create', [
-            'tweet'=>'',
-            'name'=>''
+            'tweet'=>''
         ]);
     }
 
@@ -69,15 +68,14 @@ class TweetsController extends Controller
         // ]);
 
         $validated = $request->validate([
-            'tweet' => ['required', 'max:255', 'min:4'],
-            'name' => ['required', 'max:255', 'min:4']
+            'tweet' => ['required', 'max:255', 'min:4']
         ]);
 
         // $tweet = $request->input('tweet');
         // dd($tweet);
         $new_tweet = new Tweet;
         $new_tweet->message = $validated['tweet'];
-        $new_tweet->name = $validated['name'];
+        $new_tweet->user_id = auth()->user()->id;
         $new_tweet->save();
 
         session()->flash('notify_tweet_published', true );

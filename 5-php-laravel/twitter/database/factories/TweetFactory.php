@@ -18,7 +18,8 @@ class TweetFactory extends Factory
     {
         return [
             'message' => fake()->text(),
-            'name' => fake()->name()
+            // 'name' => fake()->name()
+            'user_id' => rand(1,10)
         ];
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,33 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
-Route::get('/tweets',[
-    App\Http\Controllers\TweetsController::class, 'index'
-])->name('tweets');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/tweets/create',[
-    App\Http\Controllers\TweetsController::class, 'create'
-])->name('tweets.create');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::post('/tweets/create',[
-    App\Http\Controllers\TweetsController::class, 'store'
-])->name('tweets.store');
+require __DIR__.'/auth.php';
 
-Route::get('/tweets/edit/{tweet}',[
-    App\Http\Controllers\TweetsController::class, 'edit'
-])->name('tweets.edit');
-
-Route::put('/tweets/edit/{tweet}',[
-    App\Http\Controllers\TweetsController::class, 'update'
-])->name('tweets.update');
-
-Route::get('/tweets/delete/{tweet}',[
-    App\Http\Controllers\TweetsController::class, 'delete'
-])->name('tweets.delete');
-
-Route::delete('/tweets/delete/{tweet}',[
-    App\Http\Controllers\TweetsController::class, 'destroy'
-])->name('tweets.destroy');
+require __DIR__.'/tweets.php';
