@@ -1,23 +1,3 @@
-{{-- <div class="card text-center">
-            <div class="card-body">
-                <h5 class="card-title">{{ $tweet->name }}</h5>
-                <p class="card-text">{{ $tweet->message }}</p>
-                
-                <div>
-                    <a href="{{route('tweets.edit',['tweet'=>$tweet->id])}}"
-                        class="btn btn-primary">Contestar</a>
-                    <div>
-                        @if (auth()->check())
-                            @if ($tweet->user_id == auth()->user()->id)
-                                <a href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Editar</a>
-                                <a href="{{ route('tweets.delete', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Eliminar</a>
-                            @endif
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
 <div class="sm:px-0 lg:px-64 py-4 ">
     <div class="mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
@@ -27,23 +7,34 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/SpongeBob_SquarePants_character.png"
                             alt="">
                     </div>
-                    <h5 class="my-auto">{{ $tweet->user->name }}</h5>
+                    <strong class="my-auto">{{ $tweet->user->name }}</strong>
                     <p class="my-auto">{{ $tweet->created_at }}</p>
                 </div>
                 <div class="block">
-                    <div class="flex">
+                    <div class="block ps-14 pb-4">
+                        <p class="">{{ $tweet->message }}</p>
                     </div>
-                    <p class="">{{ $tweet->message }}</p>
-                    <a href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}" class="btn btn-primary">Contestar</a>
-                    <div>
-                        @if (auth()->check())
-                            @if ($tweet->user_id == auth()->user()->id)
-                                <a href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}"
-                                    class="btn btn-primary">Editar</a>
-                                <a href="{{ route('tweets.delete', ['tweet' => $tweet->id]) }}"
-                                    class="btn btn-primary">Eliminar</a>
+                    <div class="flex justify-between">
+                        <div class="flex basis-1/2">
+                            <a type="button"
+                                class="flex w-28 justify-center rounded-full bg-transparent border-2 border-neutral-200 px-3 py-1.5 text-sm font-semibold leading-6 text-fuchsia-600 shadow-sm hover:border-fuchsia-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}">
+                                Contestar</a>
+                        </div>
+                        <div class="flex basis-1/2 justify-end gap-4">
+                            @if (auth()->check())
+                                @if ($tweet->user_id == auth()->user()->id)
+                                    <a type="button"
+                                        class="flex w-20 justify-center rounded-full bg-transparent border-2 border-neutral-200 px-3 py-1.5 text-sm font-semibold leading-6 text-fuchsia-600 shadow-sm hover:border-fuchsia-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        href="{{ route('tweets.edit', ['tweet' => $tweet->id]) }}"
+                                        class="btn btn-primary">Editar</a>
+                                    <a type="button"
+                                        class="flex w-20 justify-center rounded-full bg-transparent border-2 border-neutral-200 px-3 py-1.5 text-sm font-semibold leading-6 text-fuchsia-600 shadow-sm hover:border-fuchsia-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        href="{{ route('tweets.delete', ['tweet' => $tweet->id]) }}"
+                                        class="btn btn-primary">Eliminar</a>
+                                @endif
                             @endif
-                        @endif
+                        </div>
                     </div>
                 </div>
             </div>
