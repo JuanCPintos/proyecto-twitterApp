@@ -23,7 +23,19 @@
         </h2>
     </x-slot>
 
-    <x-tweets.create></x-tweets.create>
+    <x-tweets.create>
+        <x-slot name="method">POST</x-slot>
+        <x-slot name="action">{{ route('tweets.store') }}</x-slot>
+        <x-slot name="label">¿En qué andas?</x-slot>
+        <x-slot name="button">Publicar</x-slot>
+    </x-tweets.create>
+
+    {{-- <x-text-area>
+        <form action="{{ route('tweets.store') }}" method="POST">
+
+        </form>
+    </x-text-area> --}}
+
 
     @foreach ($tweets as $tweet)
         <x-tweets.tweet :tweet="$tweet"></x-tweets.tweet>

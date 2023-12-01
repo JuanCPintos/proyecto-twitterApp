@@ -20,12 +20,22 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $nickname = fake()->unique()->userName;
+        $nicknameWithoutSpaces = str_replace(' ', '', $nickname);
+
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'nickname' => $nicknameWithoutSpaces,
+            'avatar' => fake()->imageUrl(48, 48),
+            'locality' => fake()->city(),
+            'province' => fake()->state(),
+            'country' => fake()->country(),
+            'phone' => fake()->phoneNumber()
         ];
     }
 
