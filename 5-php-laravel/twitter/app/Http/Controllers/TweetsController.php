@@ -29,12 +29,7 @@ class TweetsController extends Controller
             'notify_tweet_deleted' => $notify_tweet_deleted
         ]);
     }
-    public function create() {
-        return view('tweets.create', [
-            'tweet'=>''
-        ]);
-    }
-
+    
     public function edit(Tweet $tweet) {
         return view('tweets.edit', [
             'tweet'=>$tweet

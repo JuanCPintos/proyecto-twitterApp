@@ -33,3 +33,5 @@ require __DIR__.'/auth.php';
 require __DIR__.'/tweets.php';
 
 require __DIR__.'/replies.php';
+
+require __DIR__.'/users.php';

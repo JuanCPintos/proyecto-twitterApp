@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
         App\Http\Controllers\TweetsController::class, 'edit'
     ])->name('tweets.edit');
 
-    Route::put('/tweets/{tweet}', [
+    Route::put('/tweets', [
         App\Http\Controllers\TweetsController::class, 'update'
     ])->name('tweets.update');
 

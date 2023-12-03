@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tweet>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reply>
  */
-class TweetFactory extends Factory
+class ReplyFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,8 @@ class TweetFactory extends Factory
     {
         return [
             'message' => fake()->text(),
-            'user_id' => rand(1,10)
+            'user_id' => rand(1,10),
+            'tweet_id' => rand(50,52)
         ];
     }
 }
