@@ -29,27 +29,22 @@ class TweetsController extends Controller
             'notify_tweet_deleted' => $notify_tweet_deleted
         ]);
     }
-    public function create() {
-        return view('tweets.create', [
-            'tweet'=>''
-        ]);
-    }
-
+    
     public function edit(Tweet $tweet) {
         return view('tweets.edit', [
             'tweet'=>$tweet
         ]);
     }
 
-    public function update(Request $request, Tweet $tweet) {
+    public function update(Tweet $tweet, Request $request) {
         $validated = $request->validate([
-            'tweet' => ['required', 'max:255', 'min:4'],
-            // 'name' => ['required', 'max:255', 'min:4']
+            'tweet' => ['required', 'max:255', 'min:4']
         ]);
 
         $tweet->message = $validated['tweet'];
-        // $tweet->name = $validated['name'];
+
         $tweet->save();
+
 
         session()->flash('notify_tweet_updated', true );
 

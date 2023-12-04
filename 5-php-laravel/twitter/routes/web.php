@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/tweets');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect('/tweets');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -33,3 +33,5 @@ require __DIR__.'/auth.php';
 require __DIR__.'/tweets.php';
 
 require __DIR__.'/replies.php';
+
+require __DIR__.'/users.php';

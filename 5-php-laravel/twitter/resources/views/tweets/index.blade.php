@@ -39,6 +39,11 @@
 
     @foreach ($tweets as $tweet)
         <x-tweets.tweet :tweet="$tweet"></x-tweets.tweet>
+        <div class="pr-4">
+            @foreach ($tweet->replies as $reply)
+                <x-tweets.tweet :tweet="$reply"></x-tweets.tweet>
+            @endforeach
+        </div>
     @endforeach
 
 

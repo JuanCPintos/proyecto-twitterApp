@@ -8,7 +8,7 @@ Route::middleware('auth')->group(function () {
         App\Http\Controllers\RepliesController::class, 'create'
     ])->name('reply.create');
 
-    Route::post('/tweets/{tweet}/reply', [
+    Route::post('/tweets/{tweet}/reply/create', [
         App\Http\Controllers\RepliesController::class, 'store'
     ])->name('reply.store');
 
