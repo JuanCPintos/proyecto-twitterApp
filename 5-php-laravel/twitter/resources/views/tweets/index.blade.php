@@ -41,7 +41,7 @@
         <x-tweets.tweet :tweet="$tweet"></x-tweets.tweet>
         <div class="pl-24">
             @foreach ($tweet->replies as $reply)
-                <x-tweets.tweet :tweet="$reply"></x-tweets.tweet>
+                <x-tweets.reply :tweet="$reply"></x-tweets.reply>
             @endforeach
         </div>
     @endforeach

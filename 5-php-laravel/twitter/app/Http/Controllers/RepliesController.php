@@ -44,12 +44,14 @@ class RepliesController extends Controller
 
     public function update(Reply $reply, Request $request) {
         $validated = $request->validate([
-            'reply' => ['required', 'max:255', 'min:4']
+            'tweet' => ['required', 'max:255', 'min:4']
         ]);
 
-        $reply->message = $validated['reply'];
-
+        $reply->message = $validated['tweet'];
         $reply->save();
+
+        session()->flash('notify_reply_updated', true );
+        return redirect()->route('tweets');
     }
 
     public function delete(Reply $reply) {

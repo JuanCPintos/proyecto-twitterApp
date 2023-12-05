@@ -7,9 +7,9 @@
 
     <x-tweets.create>
         <x-slot name="method">PUT</x-slot>
-        <x-slot name="action">{{ route('reply.update', ['tweet'=> $tweet->id]) }}</x-slot>
+        <x-slot name="action">{{ route('reply.update', ['reply'=> $reply->id]) }}</x-slot>
         <x-slot name="label">Edita tu respuesta a: </x-slot>
-        <x-slot name="p">{{ $tweet->message }}</x-slot>
+        <x-slot name="message">{{ $reply->message }}</x-slot>
         <x-slot name="button">Actualizar</x-slot>
     </x-tweets.create>
 

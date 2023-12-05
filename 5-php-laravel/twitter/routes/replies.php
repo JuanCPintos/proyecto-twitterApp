@@ -12,19 +12,19 @@ Route::middleware('auth')->group(function () {
         App\Http\Controllers\RepliesController::class, 'store'
     ])->name('reply.store');
 
-    Route::get('/tweets/{tweet}/reply/{reply}/edit', [
+    Route::get('/replies/{reply}/edit', [
         App\Http\Controllers\RepliesController::class, 'edit'
     ])->name('reply.edit');
 
-    Route::put('/tweets/{tweet}/reply/{reply}', [
+    Route::put('/replies/{reply}', [
         App\Http\Controllers\RepliesController::class, 'update'
     ])->name('reply.update');
 
-    Route::get('/tweets/{tweet}/reply/{reply}/delete', [
+    Route::get('/replies/{reply}/delete', [
         App\Http\Controllers\RepliesController::class, 'delete'
     ])->name('reply.delete');
 
-    Route::delete('/tweets/{tweet}/reply/{reply}', [
+    Route::delete('/replies/{reply}', [
         App\Http\Controllers\RepliesController::class, 'destroy'
     ])->name('reply.destroy');
 });

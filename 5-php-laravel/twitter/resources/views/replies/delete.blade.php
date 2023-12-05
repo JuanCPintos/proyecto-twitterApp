@@ -7,9 +7,9 @@
 
     <x-tweets.create>
         <x-slot name="method">POST</x-slot>
-        <x-slot name="action">{{ route('reply.store', ['tweet'=> $tweet->id]) }}</x-slot>
+        <x-slot name="action">{{ route('reply.store', ['reply'=> $reply->id]) }}</x-slot>
         <x-slot name="label">Vas a eliminar tu respuesta a: </x-slot>
-        <x-slot name="p">{{ $tweet->message }}</x-slot>
+        <x-slot name="p">{{ $reply->message }}</x-slot>
         <x-slot name="button">Eliminar</x-slot>
     </x-tweets.create>
 
