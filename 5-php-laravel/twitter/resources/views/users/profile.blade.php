@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    @include('components.tweets.profile-header')
+
     <x-tweets.profile-subtitle>
             Últimas 10 publicaciones de {{'@'.$user->nickname}}
     </x-tweets.profile-subtitle>
