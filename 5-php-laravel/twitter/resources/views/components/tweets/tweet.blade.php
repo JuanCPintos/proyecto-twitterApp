@@ -19,7 +19,7 @@
                         <p class="">{{ $tweet->message }}</p>
                     </div>
                     <div class="flex justify-between">
-                        <div class="flex basis-1/2">
+                        <div class="flex basis-1/2 pl-14">
                             <a type="button"
                                 class="flex w-28 justify-center rounded-full bg-transparent border-2 border-neutral-200 px-3 py-1.5 text-sm font-semibold leading-6 text-fuchsia-600 shadow-sm hover:border-fuchsia-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 href="{{ route('reply.create', ['tweet' => $tweet->id]) }}">
