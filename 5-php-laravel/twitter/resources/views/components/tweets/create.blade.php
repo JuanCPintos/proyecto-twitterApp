@@ -1,43 +1,3 @@
-{{-- <h1> ¿Que estas pensando?</h1>
-<form action="{{ route('tweets.store') }}" method="POST">
-		@csrf
-		<div>
-				<label>Tweet:</label>
-				<input name="tweet" value="{{ old('tweet') }}">
-				@error('tweet')
-						<div>{{ $message }}</div>
-				@enderror
-		</div> --}}
-
-{{-- <div>
-				<label>Tu nombre:</label>
-				<input name="name" value="{{ old('name') }}">
-				@error('name')
-				<div>{{ $message }}</div>
-				@enderror
-		</div> --}}
-{{-- <hr>
-<button type="submit">Tweet</button>
-</form>
-<p><a href=" {{ route('tweets') }}">volver</a></p> --}}
-
-{{-- <x-slot>
-    <x-textarea>
-        <x-slot method="{{__('POST')}}" action="{{ route('tweets.store') }}">
-            <x-slot name="label">
-                ¿En qué andas?
-            </x-slot>
-            <x-slot name="textarea">
-                {{ old('tweet') }}
-            </x-slot>
-            <x-slot name="button">
-                Publicar
-            </x-slot>
-        </x-slot>
-    </x-textarea>
-
-</x-slot> --}}
-
 <x-textarea>
     <form action={{ $action }} method= 'POST'>
         @csrf
@@ -45,7 +5,11 @@
 
         <div>
             <label class="block">{{ $label }}</label>
-            <textarea name="tweet" id="" cols="30" rows="1" class="w-full border-2 border-gray-300 p-2 rounded-md @error('tweet') border-red-500 @enderror">{{  $message ?? ''  }}</textarea>
+            @if (isset($p))
+                <p class="text-gray-500 pl-14 py-4 italic">{{ $p }}</p>
+                
+            @endif
+            <textarea name="tweet" id="" cols="30" rows="1" class="w-full border-2 border-gray-300 p-2 rounded-md">{{  $message ?? ''  }}</textarea>
             @error('tweet')
                 <div> {{ $message }} </div>
             @enderror

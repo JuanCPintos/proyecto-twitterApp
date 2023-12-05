@@ -10,7 +10,7 @@ Route::middleware('auth')->group(function () {
 
     // Tweets Base
     Route::get('/tweets/create', [
-        App\Http\Controllers\TweetsController::class, 'create'
+        App\Http\Controllers\TweetsController::class, 'index'
     ])->name('tweets.create');
 
     Route::post('/tweets', [
