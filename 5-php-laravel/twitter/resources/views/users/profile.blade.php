@@ -5,6 +5,10 @@
         </h2>
     </x-slot>
 
+    <x-tweets.profile-subtitle>
+            Últimas 10 publicaciones de {{'@'.$user->nickname}}
+    </x-tweets.profile-subtitle>
+
     @foreach ($tweets as $tweet)
         <x-tweets.tweet :tweet="$tweet"></x-tweets.tweet>
         <div class="pl-24">
@@ -14,7 +18,9 @@
         </div>
     @endforeach
 
-    
+    <x-tweets.profile-subtitle>
+            Últimos 10 comentarios de {{'@'.$user->nickname}}
+    </x-tweets.profile-subtitle>
 
     @foreach ($replies as $reply)
         <x-tweets.reply :tweet="$reply"></x-tweets.reply>
