@@ -79,6 +79,9 @@ class TweetsController extends Controller
     }
 
     public function delete(Tweet $tweet) {
+        if($tweet->user_id != auth()->user()->id) {
+            abort(403);
+        }
         return view('tweets.delete', [
             'tweet'=>$tweet
         ]);
