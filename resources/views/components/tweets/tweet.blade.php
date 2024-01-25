@@ -5,7 +5,7 @@
                 <div class="flex gap-x-3 mb-1">
                     <div class="rounded-full h-12 w-12 overflow-hidden">
                         <a href="{{ route('users.profile', ['nickname'=> $tweet->user->nickname]) }}">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/SpongeBob_SquarePants_character.png"
+                            <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"
                                 alt="">
                         </a>
                     </div>

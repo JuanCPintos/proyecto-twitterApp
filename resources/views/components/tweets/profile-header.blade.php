@@ -2,7 +2,7 @@
     <div class="mx-auto sm:px-6 lg:px-8">
         <div class="flex gap-6">
             <div class="w-32 h-32 rounded-full overflow-hidden">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/SpongeBob_SquarePants_character.png" alt="">
+                <img src="https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" alt="">
             </div>
             <div>
                 <h2 class="text-3xl"><strong>Perfil de {{$user->name}}</strong></h2>
