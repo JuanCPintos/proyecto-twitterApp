@@ -1,2 +1,0 @@
-# bootcamp
-Repositorio para bootcamp
